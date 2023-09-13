@@ -1,23 +1,25 @@
-#pragma once // ÀÌ Çì´õ ÆÄÀÏÀº ÇÑ ¹ø¸¸(once) include; #pragma(pragmatic, °³¼±ÇÏ´Â)
+#pragma once // ì´ í—¤ë” íŒŒì¼ì€ í•œ ë²ˆë§Œ(once) include; #pragma(pragmatic, ê°œì„ í•˜ëŠ”)
 
 #define DEF_VOLT_PORT	(A0)
 
-// Çì´õ ÆÄÀÏ ÀÌ¸§°ú Å¬·¡½º ÀÌ¸§À» µ¿ÀÏÇÏ°Ô ¸¸µê(±Ç°í)
-// °´Ã¼(object): ¹®Á¦¸¦ Ç®±â À§ÇÑ ÀÚ·á ±¸Á¶¸¦ °¡Áø ÄÚµåÀÇ ±âº» ±¸Á¶
-class Voltmeter // Å¬·¡½º(°´Ã¼ÀÇ ¼³°èµµ) Á¤ÀÇ -> °´Ã¼ ¸¸µé±â
+// í—¤ë” íŒŒì¼ ì´ë¦„ê³¼ í´ë˜ìŠ¤ ì´ë¦„ì„ ë™ì¼í•˜ê²Œ ë§Œë“¦(ê¶Œê³ )
+// ê°ì²´(object): ë¬¸ì œë¥¼ í’€ê¸° ìœ„í•œ ìë£Œ êµ¬ì¡°ë¥¼ ê°€ì§„ ì½”ë“œì˜ ê¸°ë³¸ êµ¬ì¡°
+class Voltmeter // í´ë˜ìŠ¤(ê°ì²´ì˜ ì„¤ê³„ë„) ì •ì˜ -> ê°ì²´ ë§Œë“¤ê¸°
 {
-public: // ¾Æ·¡ ÄÚµå´Â ¸ğµÎ public member
-	// »ı¼ºÀÚ(constructor): Å¬·¡½º ÀÌ¸§°ú µ¿ÀÏÇÑ ÀÌ¸§ »ç¿ë
+public: // ì•„ë˜ ì½”ë“œëŠ” ëª¨ë‘ public member
+	// ìƒì„±ì(constructor): í´ë˜ìŠ¤ ì´ë¦„ê³¼ ë™ì¼í•œ ì´ë¦„ ì‚¬ìš©
 	Voltmeter(void) { setPort(DEF_VOLT_PORT); }
-	// ÆÄ±«ÀÚ(destructor): Å¬·¡½º ÀÌ¸§°ú µ¿ÀÏÇÑ ÀÌ¸§ »ç¿ë; ÇÔ¼ö¸í ¾Õ¿¡ ~¸¦ »ç¿ë
+	// íŒŒê´´ì(destructor): í´ë˜ìŠ¤ ì´ë¦„ê³¼ ë™ì¼í•œ ì´ë¦„ ì‚¬ìš©; í•¨ìˆ˜ëª… ì•ì— ~ë¥¼ ì‚¬ìš©
 	~Voltmeter() {}
-	// »ı¼ºÀÚ´Â ÀÎ½ºÅÏ½º°¡ »ı±æ ¶§(new) È£Ãâ; ÆÄ±«ÀÚ ÇÔ¼ö´Â ÀÎ½ºÅÏ½º°¡ ÆÄ±«µÉ ¶§(delete) È£Ãâ
-	// ÀÎ½ºÅÏ½º(instance): Å¬·¡½º¸¦ »ı¼ºÇÑ °á°ú¹°
+	// ìƒì„±ìëŠ” ì¸ìŠ¤í„´ìŠ¤ê°€ ìƒê¸¸ ë•Œ(new) í˜¸ì¶œ; íŒŒê´´ì í•¨ìˆ˜ëŠ” ì¸ìŠ¤í„´ìŠ¤ê°€ íŒŒê´´ë  ë•Œ(delete) í˜¸ì¶œ
+	// ì¸ìŠ¤í„´ìŠ¤(instance): í´ë˜ìŠ¤ë¥¼ ìƒì„±í•œ ê²°ê³¼ë¬¼
 
-	// public method(¸â¹ö ÇÔ¼ö): class ¿ÜºÎ¿¡¼­ È£ÃâÇÒ ¼ö ÀÖ´Â ÇÔ¼ö
-	void setPort(int nPort) { m_nPort = nPort; }
+	// public method(ë©¤ë²„ í•¨ìˆ˜): class ì™¸ë¶€ì—ì„œ í˜¸ì¶œí•  ìˆ˜ ìˆëŠ” í•¨ìˆ˜
+	void setPort(int nPort) { m_nPort = nPort; } // const ë¶™ì´ë©´ ì•ˆë¨: m_nPortê°€ ë³€ê²½ë˜ê³  ìˆìŒ
+	int getVoltStep(void) const { return analogRead(m_nPort); } // const ì˜ë¯¸: í˜„ì¬ methodëŠ” propertyë¥¼ ë³€ê²½í•˜ì§€ ì•ŠìŒ(constant)
+	double getVolt(void) const { return 5. / 1023. * getVoltStep(); } // í˜„ì¬ ì „ì••ê°’ì„ ë°˜í™˜
 
-private: // ¾Æ·¡ ÄÚµå´Â ¸ğµÎ private member(class ¿ÜºÎ¿¡¼­ Á¢±Ù ºÒ°¡´É, class ³»ºÎ¿¡¼­¸¸ Á¢±Ù °¡´É)
-	// private property(¸â¹ö º¯¼ö)
-	int m_nPort; // m_: member¶õ ¶æ
+private: // ì•„ë˜ ì½”ë“œëŠ” ëª¨ë‘ private member(class ì™¸ë¶€ì—ì„œ ì ‘ê·¼ ë¶ˆê°€ëŠ¥, class ë‚´ë¶€ì—ì„œë§Œ ì ‘ê·¼ ê°€ëŠ¥)
+	// private property(ë©¤ë²„ ë³€ìˆ˜)
+	int m_nPort; // m_: memberë€ ëœ»
 };
