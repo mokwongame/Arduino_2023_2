@@ -10,5 +10,7 @@ void loop() {
   // 0V -> nVolt = 0; 5V -> nVolt = 1023 (2^10 = 1024)
   double volt = 5. / 1023. * nVolt;          // step -> 전압값
   Serial.println("volt = " + String(volt));  // String(volt): double -> string
+  int nLight = analogRead(A1);
+  Serial.println("light = " + String(nLight));
   delay(1000);                               // 1000 ms 지연
 }

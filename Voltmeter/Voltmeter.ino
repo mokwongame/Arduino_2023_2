@@ -1,6 +1,9 @@
 #include "Voltmeter.h"  // 현재 폴더에서 헤더 파일 검색
+//#include <Voltmeter.h>  // Arduino IDE가 사용하는 include 폴더 검색
+#include "LightSensor.h"
 
 Voltmeter voltmeter;  // Voltmeter란 클래스를 voltmeter란 인스턴스로 생성
+LightSensor lightSensor;
 
 void setup() {
   // put your setup code here, to run once:
@@ -13,5 +16,7 @@ void loop() {
   Serial.println("step = " + String(nVolt));
   double volt = voltmeter.getVolt();
   Serial.println("volt = " + String(volt));
+  int nLight = lightSensor.getLightStep();
+  Serial.println("\nlight = " + String(nLight));
   delay(1000);
 }
