@@ -8,6 +8,7 @@ LightSensor lightSensor;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  lightSensor.setPort(A2);
 }
 
 void loop() {
@@ -18,5 +19,8 @@ void loop() {
   Serial.println("volt = " + String(volt));
   int nLight = lightSensor.getLightStep();
   Serial.println("\nlight = " + String(nLight));
+  int nLightState = lightSensor.getLightState();
+  Serial.println("light state = " + String(nLightState));
+  Serial.println("light state = " + lightSensor.lightStateToStr(nLightState));
   delay(1000);
 }
