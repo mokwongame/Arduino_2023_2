@@ -14,7 +14,30 @@ public:
 	{
 		m_nPortR = nPortR, m_nPortG = nPortG, m_nPortB = nPortB;
 	}
+	void setup(void) { initLed(); }
+	void turnRed(bool bOn)
+	{
+		if (bOn) digitalWrite(m_nPortR, HIGH);
+		else digitalWrite(m_nPortR, LOW);
+	}
+	void turnGreen(bool bOn)
+	{
+		if (bOn) digitalWrite(m_nPortG, HIGH);
+		else digitalWrite(m_nPortG, LOW);
+	}
+	void turnBlue(bool bOn)
+	{
+		if (bOn) digitalWrite(m_nPortB, HIGH);
+		else digitalWrite(m_nPortB, LOW);
+	}
 
 private:
 	int m_nPortR, m_nPortG, m_nPortB; // RGB 포트
+
+	void initLed(void)
+	{
+		pinMode(m_nPortR, OUTPUT);
+		pinMode(m_nPortG, OUTPUT);
+		pinMode(m_nPortB, OUTPUT);
+	}
 };
