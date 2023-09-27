@@ -9,16 +9,14 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  rgbLed.turnRed(true);
-  rgbLed.turnGreen(false);
-  rgbLed.turnBlue(false);
+  rgbLed.turnRgb(CT_RED);  // red
   delay(1000);
-  rgbLed.turnRed(false);
-  rgbLed.turnGreen(true);
-  rgbLed.turnBlue(false);
+  rgbLed.turnRgb(CT_GREEN);  // green
   delay(1000);
-  rgbLed.turnRed(false);
-  rgbLed.turnGreen(false);
-  rgbLed.turnBlue(true);
+  rgbLed.turnRgb(CT_BLUE);  // blue
+  delay(1000);
+  rgbLed.turnRgb(CT_BLACK);  // black
+  delay(1000);
+  rgbLed.turnRgb(CT_WHITE);  // white
   delay(1000);
 }

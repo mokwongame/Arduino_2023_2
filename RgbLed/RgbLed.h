@@ -3,6 +3,18 @@
 #define DEF_PORT_R	(5)
 #define DEF_PORT_G	(6)
 #define DEF_PORT_B	(7)
+#define RED_BIT		(1)	// 001
+#define GREEN_BIT	(2)	// 010
+#define BLUE_BIT	(4)	// 100
+
+// CT_YELLOW == 3 = 1+2+0
+// CT_PINK == 5 = 1+0+4
+// CT_CYAN == 6 = 0+2+4
+// CT_WHITE == 7 = 1+2+4
+enum ColorType
+{
+	CT_BLACK = 0, CT_RED, CT_GREEN, CT_YELLOW, CT_BLUE, CT_PINK, CT_CYAN, CT_WHITE
+};
 
 class RgbLed
 {
@@ -29,6 +41,15 @@ public:
 	{
 		if (bOn) digitalWrite(m_nPortB, HIGH);
 		else digitalWrite(m_nPortB, LOW);
+	}
+	void turnRgb(int nColor) // nColor: 0~7
+	{
+		int nR = nColor & RED_BIT; // &: 2진수용 비트 단위 AND 연산자
+		int nG = nColor & GREEN_BIT;
+		int nB = nColor & BLUE_BIT;
+		turnRed((nR) ? true : false);
+		turnGreen((nG) ? true : false);
+		turnBlue((nB) ? true : false);
 	}
 
 private:

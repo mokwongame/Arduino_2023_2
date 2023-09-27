@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "RgbLed 클래스에 RGB on/off 함수 추가"
+git commit -m "RgbLed 클래스 완성"
 git push -u origin master
