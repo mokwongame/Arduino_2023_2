@@ -8,8 +8,12 @@
 4. 모든 actuator를 클래스로 구현되어야 함
 */
 #include "DcMotor.h"
+#include "RgbLed.h"
+#include "Buzzer.h"
 
 DcMotor dcMotor;
+RgbLed rgbLed;
+Buzzer buzzer;
 
 void setup() {
   // put your setup code here, to run once:
