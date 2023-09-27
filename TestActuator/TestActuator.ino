@@ -7,12 +7,17 @@
  - 도레미파솔라시도를 1초씩 생성
 4. 모든 actuator를 클래스로 구현되어야 함
 */
+#include "DcMotor.h"
+
+DcMotor dcMotor;
+
 void setup() {
   // put your setup code here, to run once:
-
+  dcMotor.setup();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  dcMotor.move(180);
+  dcMotor.move(-180);
 }

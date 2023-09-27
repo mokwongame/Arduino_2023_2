@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "TestActuator 스케치 추가"
+git commit -m "DcMotor 클래스 완성"
 git push -u origin master
