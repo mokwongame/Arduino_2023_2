@@ -34,16 +34,26 @@ public:
 
 	void exeCmd(void)
 	{
-		Serial.println("input = [" + m_stInput.toString() + "]");
+		//Serial.println("input = [" + m_stInput.toString() + "]");
 		String sToken = m_stInput.cutToken().toString();
-		Serial.println("token #1 = [" + sToken + "]");
+		//Serial.println("token #1 = [" + sToken + "]");
 		if (sToken == "get") exeGet();
 		else m_stInput.cutLine(); // 잘못된 명령 -> 현재 줄을 삭제
 	}
 
 	void exeGet(void) // get 명령어 실행
 	{
+		// 1. 전압 읽기: get(#1) volt(#2)
+		String sToken = m_stInput.cutToken().toString();
+		//Serial.println("token #2 = [" + sToken + "]");
+		if (sToken == "volt") exeVolt();
+		else m_stInput.cutLine();
+	}
 
+	void exeVolt(void)
+	{
+		double volt = m_voltmeter.getVolt();
+		Serial.println(String(volt, 10)); // Serial에 출력
 	}
 
 private:
