@@ -2,7 +2,7 @@
 StringTok.h: String with Token Operation for Arduino Boards Including Arduino Mega
 Author: ictplusud@gmail.com (Department of Game SW Engineering, Mokwon University)
 
-Copyright ¨Ï 2023-Forever Mokwon Game, Korea.
+Copyright ï¿½ï¿½ 2023-Forever Mokwon Game, Korea.
 All Rights Reserved. Personal and non-commercial purpose only.
 -------------------------------------------------------------------*/
 
@@ -400,7 +400,7 @@ public:
 #endif
 
  // SoftwareSerial Operations /////////////////////////////////////////////
- // SoftwareSerialÀÇ ÀÔ·ÂÀ» ¹®ÀÚ¿­·Î ¹ÝÈ¯
+ // SoftwareSerialï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
  void appendSerial(SoftwareSerial& swSerial) {
 	 m_str += getSerialInput(swSerial);
  }
