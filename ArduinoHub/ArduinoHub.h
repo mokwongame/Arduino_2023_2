@@ -38,6 +38,7 @@ public:
 		String sToken = m_stInput.cutToken().toString();
 		//Serial.println("token #1 = [" + sToken + "]");
 		if (sToken == "get") exeGet();
+		else if (sToken == "set") exeSet();
 		else m_stInput.cutLine(); // 잘못된 명령 -> 현재 줄을 삭제
 	}
 
@@ -71,6 +72,15 @@ public:
 	{
 		int nLightState = m_lightSensor.getLightStep();
 		Serial.println(nLightState);
+	}
+
+	void exeSet(void) // set 명령어 실행
+	{
+		// 3-1. 서보 모터 구동: set servo #pos (#pos: 각도를 숫자(#)로 입력)
+		// 3-2. DC 모터 구동 : set dcmotor #pos(#pos: 각도를 숫자(#)로 입력)
+		// 4. 3색 LED 출력 : set led color(color : 색깔 문자열)
+		// 5. 부저 출력 : set buzzer note #delay(note: 음정 문자열, #delay : 음 지속 시간을 msec)
+		String sToken = m_stInput.cutToken().toString();
 	}
 
 private:
