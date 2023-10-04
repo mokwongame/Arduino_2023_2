@@ -27,7 +27,23 @@ public:
 		while (1) // 무한 반복
 		{
 			m_stInput.appendSerial();
+			if (m_stInput.hasLine()) // 명령어 정상 입력
+				exeCmd(); // 명령어 실행
 		}
+	}
+
+	void exeCmd(void)
+	{
+		Serial.println("input = [" + m_stInput.toString() + "]");
+		String sToken = m_stInput.cutToken().toString();
+		Serial.println("token #1 = [" + sToken + "]");
+		if (sToken == "get") exeGet();
+		else m_stInput.cutLine(); // 잘못된 명령 -> 현재 줄을 삭제
+	}
+
+	void exeGet(void) // get 명령어 실행
+	{
+
 	}
 
 private:
