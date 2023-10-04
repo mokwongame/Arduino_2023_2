@@ -26,7 +26,7 @@ public:
 	{
 		while (1) // 무한 반복
 		{
-
+			m_stInput.appendSerial();
 		}
 	}
 

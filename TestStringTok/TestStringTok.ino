@@ -9,7 +9,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  // Serial로부터 문장 읽기
+  // Serial로부터 문장 읽기 -> stInput에 추가하기
   stInput.appendSerial();  // append(추가하기)
   // 사용자 입력: stInput은 문장을 저장
   // 사용자 미입력: stInput은 empty
