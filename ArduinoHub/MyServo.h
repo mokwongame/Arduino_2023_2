@@ -11,7 +11,7 @@ public: // public member(외부 접근 가능)
 	MyServo(void) { setPort(DEF_SERVO_PORT); } // 생성자(클래스가 생성될 때 호출되는 함수)
 	~MyServo() {} // 파괴자(클래스가 파괴될 때 호출되는 함수)
 
-	int getServoPos(void) const { return m_servo.read(); } // const 의미: 현재 프로퍼티를 변경시키지 않음(상수(constant)로 처리)
+	int getServoPos(void) { return m_servo.read(); } // const 의미: 현재 프로퍼티를 변경시키지 않음(상수(constant)로 처리); Servo::read()는 const로 선언되지 않아 const를 삭제
 	void setPort(int nPort) { m_nPort = nPort; }
 	void setup(void) { initMotor(); }
 	void move(int nPos) // nPos: 0도 ~ 180도 범위로 입력

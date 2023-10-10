@@ -63,7 +63,7 @@ public:
 
 	void exeLight(void)
 	{
-		int nLightState = m_lightSensor.getLightState();
+		LightState nLightState = m_lightSensor.getLightState();
 		String sLightState = m_lightSensor.lightStateToStr(nLightState);
 		Serial.println(sLightState);
 	}
