@@ -81,6 +81,16 @@ public:
 		// 4. 3색 LED 출력 : set led color(color : 색깔 문자열)
 		// 5. 부저 출력 : set buzzer note #delay(note: 음정 문자열, #delay : 음 지속 시간을 msec)
 		String sToken = m_stInput.cutToken().toString();
+		if (sToken == "servo") exeServo();
+		else m_stInput.cutLine(); // 현재 명령어를 제거
+	}
+
+	// set servo #pos(숫자: 정수)
+	void exeServo(void)
+	{
+		StringTok stToken = m_stInput.cutToken(); // #pos가 될 정수 문자열
+		int nPos = stToken.toInt();
+		m_myServo.move(nPos);
 	}
 
 private:
