@@ -52,6 +52,16 @@ public:
 		turnBlue((nB) ? true : false);
 	}
 
+	//ColorType strToColorType(String sColor)
+	ColorType strToColorType(const String& sColor)
+	{
+		if (sColor == "black") return CT_BLACK;
+		else if (sColor == "red") return CT_RED;
+		else if (sColor == "green") return CT_GREEN;
+		else if (sColor == "blue") return CT_BLUE;
+		else return CT_BLACK; // error 발생
+	}
+
 private:
 	int m_nPortR, m_nPortG, m_nPortB; // RGB 포트
 

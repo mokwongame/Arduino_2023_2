@@ -83,6 +83,7 @@ public:
 		String sToken = m_stInput.cutToken().toString();
 		if (sToken == "servo") exeServo();
 		else if (sToken == "dcmotor") exeDcMotor();
+		else if (sToken == "led") exeLed();
 		else m_stInput.cutLine(); // 현재 명령어를 제거
 	}
 
@@ -100,6 +101,14 @@ public:
 		StringTok stToken = m_stInput.cutToken(); // #pos가 될 정수 문자열
 		int nPos = stToken.toInt();
 		m_dcMotor.move(nPos);
+	}
+
+	// set led color(color : 색깔 문자열)
+	void exeLed(void)
+	{
+		String sToken = m_stInput.cutToken().toString();
+		int nColor = (int)m_rgbLed.strToColorType(sToken);
+		m_rgbLed.turnRgb(nColor);
 	}
 
 private:
