@@ -82,6 +82,7 @@ public:
 		// 5. 부저 출력 : set buzzer note #delay(note: 음정 문자열, #delay : 음 지속 시간을 msec)
 		String sToken = m_stInput.cutToken().toString();
 		if (sToken == "servo") exeServo();
+		else if (sToken == "dcmotor") exeDcMotor();
 		else m_stInput.cutLine(); // 현재 명령어를 제거
 	}
 
@@ -91,6 +92,14 @@ public:
 		StringTok stToken = m_stInput.cutToken(); // #pos가 될 정수 문자열
 		int nPos = stToken.toInt();
 		m_myServo.move(nPos);
+	}
+
+	// set dcmotor #pos
+	void exeDcMotor(void)
+	{
+		StringTok stToken = m_stInput.cutToken(); // #pos가 될 정수 문자열
+		int nPos = stToken.toInt();
+		m_dcMotor.move(nPos);
 	}
 
 private:
