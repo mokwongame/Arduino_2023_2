@@ -84,6 +84,7 @@ public:
 		if (sToken == "servo") exeServo();
 		else if (sToken == "dcmotor") exeDcMotor();
 		else if (sToken == "led") exeLed();
+		else if (sToken == "buzzer") exeBuzzer();
 		else m_stInput.cutLine(); // 현재 명령어를 제거
 	}
 
@@ -109,6 +110,16 @@ public:
 		String sToken = m_stInput.cutToken().toString();
 		int nColor = (int)m_rgbLed.strToColorType(sToken);
 		m_rgbLed.turnRgb(nColor);
+	}
+
+	// set buzzer note #delay
+	void exeBuzzer(void)
+	{
+		String sToken3 = m_stInput.cutToken().toString(); // note
+		StringTok stToken4 = m_stInput.cutToken(); // #delay
+		int nNote = (int)m_buzzer.strToNoteType(sToken3);
+		int nDelay = stToken4.toInt();
+		m_buzzer.play(nNote, nDelay);
 	}
 
 private:

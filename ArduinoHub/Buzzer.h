@@ -4,7 +4,7 @@
 
 enum NoteType
 {
-	NT_DO = 523, NT_RE = 587, NT_MI = 659, NT_FA = 698, NT_SOL = 784, NT_LA = 880, NT_SI = 988
+	NT_NULL = 0, NT_DO = 523, NT_RE = 587, NT_MI = 659, NT_FA = 698, NT_SOL = 784, NT_LA = 880, NT_SI = 988
 };
 
 class Buzzer
@@ -19,6 +19,14 @@ public:
 	{
 		tone(m_nPort, nNote, nTime);
 		delay(nTime);
+	}
+	//NoteType strToNoteType(String sNote)
+	NoteType strToNoteType(const String& sNote)
+	{
+		if (sNote == "do") return NT_DO;
+		else if (sNote == "re") return NT_RE;
+		else if (sNote == "mi") return NT_MI;
+		else return 0;
 	}
 
 private:
